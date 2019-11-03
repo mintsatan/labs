@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="443.12823237262364" y="2062.0295722563233">ru.ifmo.se.pokemon.StatusMove</node>
+    <node x="493.06966750845277" y="206.04021621239212">com.company.LeechLife</node>
+    <node x="720.6016204859081" y="1765.6266456150952">com.company.ConfuseRay</node>
+    <node x="51.621662094330645" y="2036.7382945256818">com.company.Confide</node>
+    <node x="465.8342348605305" y="1072.0470257618153">ru.ifmo.se.pokemon.Move</node>
+    <node x="774.9986191392625" y="2397.7157512955146">com.company.DoubleTeam</node>
+    <node x="144.99623828399956" y="2371.4084693960776">com.company.Rest</node>
+    <node x="429.95055505825144" y="611.5550038216505">ru.ifmo.se.pokemon.DamageMove</node>
+    <node x="0.0" y="0.0">com.company.LowSweep</node>
+    <node x="810.1875885382658" y="454.7741534013587">ru.ifmo.se.pokemon.SpecialMove</node>
+    <node x="929.0450967168331" y="168.18148445365318">com.company.Psychic</node>
+    <node x="248.23326583910875" y="1749.365714349592">com.company.Roost</node>
+    <node x="1153.3808928330477" y="561.1779675941341">com.company.DazzlingGleam</node>
+    <node x="144.12099705724017" y="243.4056591797596">ru.ifmo.se.pokemon.PhysicalMove</node>
+    <node x="451.47114537969264" y="2528.8785342675974">com.company.Swagger</node>
+    <node x="7.242901625275522" y="535.544832422882">com.company.RockTomb</node>
+    <node x="890.9581175065009" y="2071.7868299153843">com.company.PlayNice</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.company.LeechLife" target="ru.ifmo.se.pokemon.PhysicalMove">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.company.DoubleTeam" target="ru.ifmo.se.pokemon.StatusMove">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.company.Psychic" target="ru.ifmo.se.pokemon.SpecialMove">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.ifmo.se.pokemon.PhysicalMove" target="ru.ifmo.se.pokemon.DamageMove">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.company.RockTomb" target="ru.ifmo.se.pokemon.PhysicalMove">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.company.PlayNice" target="ru.ifmo.se.pokemon.StatusMove">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.company.Swagger" target="ru.ifmo.se.pokemon.StatusMove">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.ifmo.se.pokemon.StatusMove" target="ru.ifmo.se.pokemon.Move">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.ifmo.se.pokemon.SpecialMove" target="ru.ifmo.se.pokemon.DamageMove">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.company.Rest" target="ru.ifmo.se.pokemon.StatusMove">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.ifmo.se.pokemon.DamageMove" target="ru.ifmo.se.pokemon.Move">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.company.Confide" target="ru.ifmo.se.pokemon.StatusMove">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.company.ConfuseRay" target="ru.ifmo.se.pokemon.StatusMove">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.company.Roost" target="ru.ifmo.se.pokemon.StatusMove">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.company.DazzlingGleam" target="ru.ifmo.se.pokemon.SpecialMove">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.company.LowSweep" target="ru.ifmo.se.pokemon.PhysicalMove">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Balloon" zoom="0.35059438896814066" x="662.986051677688" y="731.5807676658079" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="8.0" y="929.0">com.company.Steenee</node>
+    <node x="72.0" y="0.0">ru.ifmo.se.pokemon.Pokemon</node>
+    <node x="178.0" y="929.0">com.company.Venomoth</node>
+    <node x="5.5" y="1029.0">com.company.Tsareena</node>
+    <node x="355.0" y="829.0">com.company.Komala</node>
+    <node x="0.0" y="829.0">com.company.Bounsweet</node>
+    <node x="184.0" y="829.0">com.company.Venonat</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.company.Tsareena" target="com.company.Steenee">
+      <point x="0.0" y="-25.0" />
+      <point x="0.0" y="25.0" />
+    </edge>
+    <edge source="com.company.Bounsweet" target="ru.ifmo.se.pokemon.Pokemon">
+      <point x="0.0" y="-25.0" />
+      <point x="82.0" y="804.0" />
+      <point x="134.5" y="804.0" />
+      <point x="-125.0" y="389.5" />
+    </edge>
+    <edge source="com.company.Steenee" target="com.company.Bounsweet">
+      <point x="0.0" y="-25.0" />
+      <point x="0.0" y="25.0" />
+    </edge>
+    <edge source="com.company.Venomoth" target="com.company.Venonat">
+      <point x="0.0" y="-25.0" />
+      <point x="0.0" y="25.0" />
+    </edge>
+    <edge source="com.company.Venonat" target="ru.ifmo.se.pokemon.Pokemon">
+      <point x="0.0" y="-25.0" />
+      <point x="0.0" y="389.5" />
+    </edge>
+    <edge source="com.company.Komala" target="ru.ifmo.se.pokemon.Pokemon">
+      <point x="0.0" y="-25.0" />
+      <point x="428.0" y="804.0" />
+      <point x="384.5" y="804.0" />
+      <point x="125.0" y="389.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9" x="795.1249999999995" y="407.3749999999998" />
+  <SelectedNodes>
+    <node>com.company.Steenee</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
