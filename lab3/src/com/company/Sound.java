@@ -1,18 +1,15 @@
 package com.company;
 
-public class Sound {
-    String name;
-    Sound(String name) {
-        this.name = name;
+public abstract class Sound {
+    private String name;
+
+    Sound(String str) {
+        name = str;
     }
 
-    public String beHeard(){
-        return name + " " + "was heard" + ".";
-    }
+    public abstract String sounds();
 
-    @Override
-    public String toString()
-    {
+    String getName() {
         return name;
     }
 }
