@@ -23,6 +23,7 @@ public class Main {
         Human Hnugl = new Human("Hnugl");
         System.out.print(Hnugl.getIntoZG());
         System.out.println(Hnugl.shoot("a long-range large-caliber rifle"));
+        System.out.print(Hnugl.reactivePowerPlus());
         System.out.print(Hnugl.flyAround());
         System.out.print(Hnugl.checkCoordinates());
     }
