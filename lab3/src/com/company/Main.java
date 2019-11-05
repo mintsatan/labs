@@ -18,6 +18,13 @@ public class Main {
         watcher.setName("Sleepwalkers");
         System.out.print(watcher.didSomething("deceive in", true, "their expectations"));
         System.out.println("In those days were translating some news about: " + Arrays.asList(Themes.values()).subList(1, 4));
+        watcher.setName("Everyone");
+        System.out.print(watcher.didSomething("struck by", false, "the story of Hnugl"));
+        Human Hnugl = new Human("Hnugl");
+        System.out.print(Hnugl.getIntoZG());
+        System.out.println(Hnugl.shoot("a long-range large-caliber rifle"));
+        System.out.print(Hnugl.flyAround());
+        System.out.print(Hnugl.checkCoordinates());
     }
 
 }
