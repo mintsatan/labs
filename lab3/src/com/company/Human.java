@@ -1,18 +1,18 @@
 package com.company;
 
-import java.util.Arrays;
+public abstract class Human {
+    protected String name;
+    protected String race;
+    protected int quantity;
+    private  int planetCoordinateX;
+    private int planetCoordinateY;
+    private int planetCoordinateZ;
+    private String spaceObject;
 
-public class Human implements HumanPlus, Policeman, inZeroGravity {
-    private String name;
-    private  int planetCoordinateX = 54;  int planetCoordinateY = 28; int planetCoordinateZ = 33;
-    private String spaceObject = "Moon";
-
-    Human(String str) {
+    Human(String str, int number, String type) {
         name = str;
-    }
-
-    String getName() {
-        return name;
+        quantity = number;
+        race = type;
     }
 
     void setPlanetCoordinateX(int coordinateX) {
@@ -27,43 +27,41 @@ public class Human implements HumanPlus, Policeman, inZeroGravity {
         this.planetCoordinateZ = coordinateZ;
     }
 
+
+    String getName() {
+        return name;
+    }
+
     void setName(String name) {
         this.name = name;
     }
 
-    @Override
-    public String didSomething(String action, boolean negation, String thing) {
-        return getName() + (negation ? " didn't " : " ") + action + " " + thing + ". ";
-    }
+    public abstract String didSomething(String action, boolean negation, String thing);
+
+    abstract public String checkCoordinates();
 
     @Override
-    public String shoot(String weapon) {
-        return getName() + " shot from " + weapon + ". ";
-    }
-
-    @Override
-    public String getIntoZG() {
-        return getName() + " got into zero gravity " + "on the " + spaceObject + " in coordinates: "
-                + planetCoordinateX + ", " + planetCoordinateY + ", " + planetCoordinateZ + ". ";
+    public String toString() {
+        return  "Quantity : " + quantity + " " + getName() + " Race: " + race;
     }
 
     @Override
-    public String reactivePowerPlus() {
-        return "The speed of reactive power" + " on the " + spaceObject + " increased. ";
-    }
-
-    public String checkCoordinates() {
-        if (planetCoordinateX == 54 && planetCoordinateY == 28 && planetCoordinateZ == 33) {
-            return "Coordinates of " + getName() + " haven't changed. ";
-        } else {
-            return "New coordinates: " + planetCoordinateX + ", " + planetCoordinateY + ", " + planetCoordinateZ + ". ";
-        }
+    public int hashCode() {
+        return super.hashCode() + quantity;
     }
 
     @Override
-    public String flyAround() {
-        return getName() + " flew around the " + spaceObject + ". ";
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Human other = (Human) obj;
+        if (quantity != other.quantity)
+            return false;
+        boolean equ = (obj.hashCode() == this.hashCode()) ? true : false;
+        return equ;
     }
-
-
 }

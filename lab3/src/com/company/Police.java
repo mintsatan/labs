@@ -1,5 +1,5 @@
 package com.company;
 
-public interface Policeman {
+public interface Police {
     public String shoot(String weapon);
 }

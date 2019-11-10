@@ -1,27 +1,28 @@
 package com.company;
 
-import java.util.Arrays;
-
 public class Main {
 
     public static void main(String[] args) {
         Sound music = new Music("Music");
         System.out.print(music.sounds());
-        DancingCouples couple = new DancingCouples("Dancing couples");
-        System.out.print(couple.appear("on the screen"));
-        Watchers watcher = new Watchers("Watchers");
-        System.out.print(watcher.watchBroadcast(Themes.DANCING));
+        DancingCouples couple = new DancingCouples("Dancing couples", new DancingPeople("men", 22, "Earthling"), new DancingPeople("women", 22, "Earthling"));
+        System.out.print(couple.appear());
+        Watchers watcher = new Watchers("Watchers",  101, "Earthling");
+        System.out.println(watcher.watchBroadcast(Themes.DANCING));
         watcher.setName("Nobody");
         System.out.print(watcher.didSomething("turn off", true, "the TV"));
         watcher.setName("Everyone");
-        System.out.println(watcher.watchBroadcast(Themes.COSMONAUTS));
+        System.out.print(watcher.watchBroadcast(Themes.COSMONAUTS));
         watcher.setName("Sleepwalkers");
-        System.out.print(watcher.didSomething("deceive in", true, "their expectations"));
-        System.out.println("In those days were translating some news about: " + Arrays.asList(Themes.values()).subList(1, 4));
+        System.out.println(watcher.didSomething("deceive in", true, "their expectations"));
+        Radio radio = new Radio("radio", 600, 900);
+        System.out.println(radio.translate(Themes.COSMONAUTS, Themes.GIANT_PLANTS, Themes.ZERO_GRAVITY));
+        Television television = new Television("television", 600, 900);
+        System.out.print(television.translate(Themes.COSMONAUTS, Themes.GIANT_PLANTS, Themes.ZERO_GRAVITY));
         watcher.setName("Everyone");
-        System.out.print(watcher.didSomething("struck by", false, "the story of Hnugl"));
-        Human Hnugl = new Human("Hnugl");
-        System.out.print(Hnugl.getIntoZG());
+        System.out.println(watcher.didSomething("struck by", false, "the story of Hnugl"));
+        PolicemanInZeroGravity Hnugl = new PolicemanInZeroGravity("Hnugl", 1, "Earthling");
+        System.out.print(Hnugl.GetIntoZG());
         System.out.println(Hnugl.shoot("a long-range large-caliber rifle"));
         System.out.print(Hnugl.reactivePowerPlus());
         System.out.print(Hnugl.flyAround());
