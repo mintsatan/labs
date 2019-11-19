@@ -49,7 +49,7 @@ public class DancingCouples {
     }
 
     public String appear() {
-        return getName() + ": " + human1 + ", " + human2 + " appeared " + place + ". ";
+        return getName() + ": " + human1 + ", and " + human2 + " appeared " + place + ". ";
     }
 
     @Override

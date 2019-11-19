@@ -28,5 +28,4 @@ public class Main {
         System.out.print(Hnugl.flyAround());
         System.out.print(Hnugl.checkCoordinates());
     }
-
 }
