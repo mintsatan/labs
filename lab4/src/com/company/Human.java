@@ -49,8 +49,14 @@ public abstract class Human {
         return getName() + "says: " + words + ". ";
     }
 
-    public String came(String place) {
-        return getName() + "came to " + place + ". ";
+    public String came(String place, int speed) {
+        if (speed <= 10) {
+            return getName() + " came to " + place + ". ";
+        } else if (speed == 0) {
+            return getName() + standing() + ". ";
+        } else {
+            return getName() + " run to " + place + ". ";
+        }
     }
 
     public abstract String standing();

@@ -11,6 +11,11 @@ public class PolicemanInZeroGravity extends Human implements Police, inZeroGravi
     }
 
     @Override
+    public String standing() {
+        return null;
+    }
+
+    @Override
     public String checkCoordinates() {
         if (planetCoordinateX == 54 && planetCoordinateY == 28 && planetCoordinateZ == 33) {
             return "Coordinates of " + getName() + " haven't changed. ";

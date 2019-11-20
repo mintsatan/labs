@@ -14,7 +14,15 @@ public class Shorties extends Human {
     }
 
     final String dodgeBalls(boolean hit) {
-        return getName() + (hit ? "didn't have time to dodge" : "dodges balls");
+        if (hit) {
+            return getName() + " didn't have time to dodge. " + came("home", 15);
+        } else {
+            return getName() + " dodges balls. ";
+        }
+    }
+
+    public String calculations(boolean guess) {
+        return "Calculation " + getName() + "'s " + (guess ? "turned out to be true. " : " turned out to be wrong. ");
     }
 
     @Override
