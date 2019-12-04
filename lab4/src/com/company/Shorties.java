@@ -10,14 +10,15 @@ public class Shorties extends Human {
     }
 
     final static String throwBalls() {
-        return "someone trows Balls. ";
+        return "Shorties trows Balls. ";
     }
 
-    final String dodgeBalls(boolean hit) {
+    final String dodge(boolean hit, Things thing) {
+        thing.fall();
         if (hit) {
-            return getName() + " didn't have time to dodge. " + came("home", 15);
+            return getName() + pain() + getName() + " didn't have time to dodge. " + came(TypeOfInstitution.HOME, 15);
         } else {
-            return getName() + " dodges balls. ";
+            return getName() + " dodges " + thing.getName() + ". ";
         }
     }
 

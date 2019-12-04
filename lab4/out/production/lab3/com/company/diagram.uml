@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="1360.7619047619048" y="0.0">com.company.TypeOfInstitution</node>
+    <node x="392.0" y="1346.0">com.company.FunBooth</node>
+    <node x="712.0" y="1051.0">com.company.Sound</node>
+    <node x="1512.0" y="1051.0">com.company.Themes</node>
+    <node x="303.0" y="693.0">com.company.Watchers</node>
+    <node x="1199.0" y="1154.0">com.company.Radio</node>
+    <node x="961.7619047619048" y="284.0">com.company.Police</node>
+    <node x="1132.7619047619048" y="262.0">com.company.inZeroGravity</node>
+    <node x="0.0" y="1563.0">com.company.Main</node>
+    <node x="909.0" y="671.0">com.company.PolicemanInZeroGravity</node>
+    <node x="1055.0" y="1051.0">com.company.Media</node>
+    <node x="606.0" y="715.0">com.company.DancingPeople</node>
+    <node x="0.0" y="1051.0">com.company.DancingCouples</node>
+    <node x="0.0" y="682.0">com.company.Shorties</node>
+    <node x="911.0" y="1154.0">com.company.Television</node>
+    <node x="441.2619047619048" y="0.0">com.company.Human</node>
+    <node x="696.0" y="1260.0">com.company.Music</node>
+    <node x="391.0" y="1051.0">com.company.Institution</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.company.Television" target="com.company.Media">
+      <point x="0.0" y="-100.5" />
+      <point x="1045.0" y="1129.0" />
+      <point x="1122.0" y="1129.0" />
+      <point x="-67.0" y="26.5" />
+    </edge>
+    <edge source="com.company.PolicemanInZeroGravity" target="com.company.Human">
+      <point x="-94.33333333333331" y="-167.5" />
+      <point x="956.1666666666667" y="641.0" />
+      <point x="688.8869047619048" y="641.0" />
+      <point x="106.125" y="310.5" />
+    </edge>
+    <edge source="com.company.PolicemanInZeroGravity" target="com.company.Police">
+      <point x="0.0" y="-167.5" />
+      <point x="1050.5" y="651.0" />
+      <point x="1037.2619047619048" y="651.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="com.company.Shorties" target="com.company.Human">
+      <point x="0.0" y="-156.5" />
+      <point x="141.5" y="641.0" />
+      <point x="476.6369047619048" y="641.0" />
+      <point x="-106.125" y="310.5" />
+    </edge>
+    <edge source="com.company.FunBooth" target="com.company.Institution">
+      <point x="0.0" y="-79.5" />
+      <point x="0.0" y="122.5" />
+    </edge>
+    <edge source="com.company.DancingPeople" target="com.company.Human">
+      <point x="0.0" y="-123.5" />
+      <point x="747.5" y="651.0" />
+      <point x="618.1369047619048" y="651.0" />
+      <point x="35.375" y="310.5" />
+    </edge>
+    <edge source="com.company.Radio" target="com.company.Media">
+      <point x="0.0" y="-100.5" />
+      <point x="1333.0" y="1129.0" />
+      <point x="1256.0" y="1129.0" />
+      <point x="67.0" y="26.5" />
+    </edge>
+    <edge source="com.company.PolicemanInZeroGravity" target="com.company.inZeroGravity">
+      <point x="94.33333333333331" y="-167.5" />
+      <point x="1144.8333333333333" y="651.0" />
+      <point x="1224.2619047619048" y="651.0" />
+      <point x="0.0" y="48.5" />
+    </edge>
+    <edge source="com.company.Watchers" target="com.company.Human">
+      <point x="0.0" y="-145.5" />
+      <point x="444.5" y="651.0" />
+      <point x="547.3869047619048" y="651.0" />
+      <point x="-35.375" y="310.5" />
+    </edge>
+    <edge source="com.company.Music" target="com.company.Sound">
+      <point x="0.0" y="-69.5" />
+      <point x="0.0" y="79.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6253430185633575" x="1600.801989672379" y="820.9236740274393" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

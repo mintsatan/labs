@@ -1,6 +1,6 @@
 package com.company;
 
-public abstract class Human {
+public abstract class Human implements Pain {
     protected String name;
     protected String race;
     protected int quantity;
@@ -28,12 +28,7 @@ public abstract class Human {
     }
 
     public String lookForAJob() {
-        if (quantity > 1) {
-            return getName() + " are searching for a job. ";
-        }
-        else {
             return getName() + " is searching for a job. ";
-        }
     }
 
     public String findJob(boolean job) {
@@ -46,16 +41,16 @@ public abstract class Human {
     }
 
     public String say(String words) {
-        return getName() + "says: " + words + ". ";
+        return getName() + " says: " + words + ". ";
     }
 
-    public String came(String place, int speed) {
+    public String came(TypeOfInstitution somewhere, int speed) {
         if (speed <= 10) {
-            return getName() + " came to " + place + ". ";
+            return getName() + " came to " + somewhere + ". ";
         } else if (speed == 0) {
             return getName() + standing() + ". ";
         } else {
-            return getName() + " run to " + place + ". ";
+            return getName() + " run to " + somewhere + ". ";
         }
     }
 
@@ -75,6 +70,10 @@ public abstract class Human {
 
     public String saw(String view) {
         return getName() + " saw " + view + ". ";
+    }
+
+    public String toRegret(Human someone) {
+        return getName() + " regrets to " + someone.getName() + ". ";
     }
 
     @Override
