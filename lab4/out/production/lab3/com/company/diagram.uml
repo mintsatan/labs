@@ -3,86 +3,148 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="1360.7619047619048" y="0.0">com.company.TypeOfInstitution</node>
-    <node x="392.0" y="1346.0">com.company.FunBooth</node>
-    <node x="712.0" y="1051.0">com.company.Sound</node>
-    <node x="1512.0" y="1051.0">com.company.Themes</node>
-    <node x="303.0" y="693.0">com.company.Watchers</node>
-    <node x="1199.0" y="1154.0">com.company.Radio</node>
-    <node x="961.7619047619048" y="284.0">com.company.Police</node>
-    <node x="1132.7619047619048" y="262.0">com.company.inZeroGravity</node>
-    <node x="0.0" y="1563.0">com.company.Main</node>
-    <node x="909.0" y="671.0">com.company.PolicemanInZeroGravity</node>
-    <node x="1055.0" y="1051.0">com.company.Media</node>
-    <node x="606.0" y="715.0">com.company.DancingPeople</node>
-    <node x="0.0" y="1051.0">com.company.DancingCouples</node>
-    <node x="0.0" y="682.0">com.company.Shorties</node>
-    <node x="911.0" y="1154.0">com.company.Television</node>
-    <node x="441.2619047619048" y="0.0">com.company.Human</node>
-    <node x="696.0" y="1260.0">com.company.Music</node>
-    <node x="391.0" y="1051.0">com.company.Institution</node>
+    <node x="1362.4166666666665" y="0.0">com.company.TypeOfInstitution</node>
+    <node x="758.0" y="1154.0">com.company.Fall</node>
+    <node x="558.0" y="1154.0">com.company.Quality</node>
+    <node x="523.0" y="1904.0">com.company.TypeOfThings</node>
+    <node x="653.75" y="1574.0">com.company.Ball</node>
+    <node x="330.0" y="1513.0">com.company.ShortysHouse</node>
+    <node x="1134.4166666666665" y="365.0">com.company.inZeroGravity</node>
+    <node x="839.0" y="1904.0">com.company.Main</node>
+    <node x="908.0" y="1154.0">com.company.DancingCouples</node>
+    <node x="0.0" y="1471.0">com.company.FunBooth</node>
+    <node x="696.0" y="1904.0">com.company.Themes</node>
+    <node x="1315.0" y="1154.0">com.company.Sound</node>
+    <node x="0.0" y="796.0">com.company.Watchers</node>
+    <node x="1802.0" y="1257.0">com.company.Radio</node>
+    <node x="963.4166666666666" y="387.0">com.company.Police</node>
+    <node x="645.25" y="1257.0">com.company.Things</node>
+    <node x="528.4166666666666" y="0.0">com.company.Pain</node>
+    <node x="90.5" y="1904.0">java.lang.Exception</node>
+    <node x="909.0" y="774.0">com.company.PolicemanInZeroGravity</node>
+    <node x="1658.0" y="1154.0">com.company.Media</node>
+    <node x="303.0" y="818.0">com.company.DancingPeople</node>
+    <node x="252.0" y="2137.0">com.company.IsTheObjectExistException</node>
+    <node x="0.0" y="2137.0">com.company.InstitutionIsOpenException</node>
+    <node x="9.5" y="1700.0">com.company.FunBooth.Curtain</node>
+    <node x="606.0" y="774.0">com.company.Shorties</node>
+    <node x="1514.0" y="1257.0">com.company.Television</node>
+    <node x="442.91666666666663" y="103.0">com.company.Human</node>
+    <node x="1299.0" y="1363.0">com.company.Music</node>
+    <node x="193.0" y="1534.0">com.company.Institution.Foundation</node>
+    <node x="168.0" y="1154.0">com.company.Institution</node>
   </nodes>
   <notes />
   <edges>
+    <edge source="com.company.InstitutionIsOpenException" target="java.lang.Exception">
+      <point x="0.0" y="-26.5" />
+      <point x="116.0" y="2112.0" />
+      <point x="165.5" y="2112.0" />
+      <point x="-75.0" y="91.5" />
+    </edge>
     <edge source="com.company.Television" target="com.company.Media">
       <point x="0.0" y="-100.5" />
-      <point x="1045.0" y="1129.0" />
-      <point x="1122.0" y="1129.0" />
+      <point x="1648.0" y="1232.0" />
+      <point x="1725.0" y="1232.0" />
       <point x="-67.0" y="26.5" />
     </edge>
+    <edge source="com.company.Ball" target="com.company.Things">
+      <point x="0.0" y="-68.5" />
+      <point x="0.0" y="133.5" />
+    </edge>
     <edge source="com.company.PolicemanInZeroGravity" target="com.company.Human">
-      <point x="-94.33333333333331" y="-167.5" />
-      <point x="956.1666666666667" y="641.0" />
-      <point x="688.8869047619048" y="641.0" />
+      <point x="-94.33333333333326" y="-167.5" />
+      <point x="956.1666666666667" y="744.0" />
+      <point x="690.5416666666666" y="744.0" />
       <point x="106.125" y="310.5" />
     </edge>
-    <edge source="com.company.PolicemanInZeroGravity" target="com.company.Police">
-      <point x="0.0" y="-167.5" />
-      <point x="1050.5" y="651.0" />
-      <point x="1037.2619047619048" y="651.0" />
+    <edge source="com.company.Things" target="com.company.Quality">
+      <point x="-42.0" y="-133.5" />
+      <point x="687.25" y="1232.0" />
+      <point x="648.0" y="1232.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="com.company.Things" target="com.company.Fall">
+      <point x="42.0" y="-133.5" />
+      <point x="771.25" y="1232.0" />
+      <point x="810.5" y="1232.0" />
       <point x="0.0" y="26.5" />
     </edge>
     <edge source="com.company.Shorties" target="com.company.Human">
-      <point x="0.0" y="-156.5" />
-      <point x="141.5" y="641.0" />
-      <point x="476.6369047619048" y="641.0" />
-      <point x="-106.125" y="310.5" />
-    </edge>
-    <edge source="com.company.FunBooth" target="com.company.Institution">
-      <point x="0.0" y="-79.5" />
-      <point x="0.0" y="122.5" />
-    </edge>
-    <edge source="com.company.DancingPeople" target="com.company.Human">
-      <point x="0.0" y="-123.5" />
-      <point x="747.5" y="651.0" />
-      <point x="618.1369047619048" y="651.0" />
+      <point x="0.0" y="-167.5" />
+      <point x="747.5" y="754.0" />
+      <point x="619.7916666666666" y="754.0" />
       <point x="35.375" y="310.5" />
     </edge>
-    <edge source="com.company.Radio" target="com.company.Media">
-      <point x="0.0" y="-100.5" />
-      <point x="1333.0" y="1129.0" />
-      <point x="1256.0" y="1129.0" />
-      <point x="67.0" y="26.5" />
-    </edge>
-    <edge source="com.company.PolicemanInZeroGravity" target="com.company.inZeroGravity">
-      <point x="94.33333333333331" y="-167.5" />
-      <point x="1144.8333333333333" y="651.0" />
-      <point x="1224.2619047619048" y="651.0" />
-      <point x="0.0" y="48.5" />
+    <edge source="com.company.FunBooth" target="com.company.Institution">
+      <point x="0.0" y="-89.5" />
+      <point x="86.5" y="1446.0" />
+      <point x="195.83333333333334" y="1446.0" />
+      <point x="-55.66666666666666" y="133.5" />
     </edge>
     <edge source="com.company.Watchers" target="com.company.Human">
       <point x="0.0" y="-145.5" />
-      <point x="444.5" y="651.0" />
-      <point x="547.3869047619048" y="651.0" />
-      <point x="-35.375" y="310.5" />
+      <point x="141.5" y="744.0" />
+      <point x="478.29166666666663" y="744.0" />
+      <point x="-106.125" y="310.5" />
+    </edge>
+    <edge source="com.company.Human" target="com.company.Pain">
+      <point x="0.0" y="-310.5" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="com.company.FunBooth.Curtain" target="com.company.FunBooth">
+      <point x="0.0" y="-79.5" />
+      <point x="0.0" y="89.5" />
     </edge>
     <edge source="com.company.Music" target="com.company.Sound">
       <point x="0.0" y="-69.5" />
       <point x="0.0" y="79.5" />
     </edge>
+    <edge source="com.company.ShortysHouse" target="com.company.Institution">
+      <point x="0.0" y="-47.5" />
+      <point x="421.5" y="1446.0" />
+      <point x="307.16666666666663" y="1446.0" />
+      <point x="55.66666666666663" y="133.5" />
+    </edge>
+    <edge source="com.company.Institution.Foundation" target="com.company.Institution">
+      <point x="0.0" y="-26.5" />
+      <point x="0.0" y="133.5" />
+    </edge>
+    <edge source="com.company.PolicemanInZeroGravity" target="com.company.Police">
+      <point x="0.0" y="-167.5" />
+      <point x="1050.5" y="754.0" />
+      <point x="1038.9166666666665" y="754.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="com.company.DancingPeople" target="com.company.Human">
+      <point x="0.0" y="-123.5" />
+      <point x="444.5" y="754.0" />
+      <point x="549.0416666666666" y="754.0" />
+      <point x="-35.375" y="310.5" />
+    </edge>
+    <edge source="com.company.Radio" target="com.company.Media">
+      <point x="0.0" y="-100.5" />
+      <point x="1936.0" y="1232.0" />
+      <point x="1859.0" y="1232.0" />
+      <point x="67.0" y="26.5" />
+    </edge>
+    <edge source="com.company.PolicemanInZeroGravity" target="com.company.inZeroGravity">
+      <point x="94.33333333333326" y="-167.5" />
+      <point x="1144.8333333333333" y="754.0" />
+      <point x="1225.9166666666665" y="754.0" />
+      <point x="0.0" y="48.5" />
+    </edge>
+    <edge source="com.company.IsTheObjectExistException" target="java.lang.Exception">
+      <point x="0.0" y="-26.5" />
+      <point x="365.0" y="2112.0" />
+      <point x="315.5" y="2112.0" />
+      <point x="75.0" y="91.5" />
+    </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.6253430185633575" x="1600.801989672379" y="820.9236740274393" />
-  <SelectedNodes />
+  <settings layout="Hierarchic Group" zoom="0.6000000000000001" x="844.9999999999999" y="419.16666666666663" />
+  <SelectedNodes>
+    <node>com.company.TypeOfInstitution</node>
+  </SelectedNodes>
   <Categories>
     <Category>Fields</Category>
     <Category>Constructors</Category>

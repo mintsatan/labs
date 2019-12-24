@@ -10,5 +10,4 @@ public class Ball extends Things {
     Ball(String name, double size) {
         super(name, size);
     }
-
 }

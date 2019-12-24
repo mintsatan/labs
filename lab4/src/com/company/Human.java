@@ -44,13 +44,14 @@ public abstract class Human implements Pain {
         return getName() + " says: " + words + ". ";
     }
 
-    public String came(TypeOfInstitution somewhere, int speed) {
+    public String came(Institution somewhere, int speed) throws InstitutionIsOpenException {
+        if (!somewhere.isOpen) throw new InstitutionIsOpenException("Unable to interact with closed establishment");
         if (speed <= 10) {
-            return getName() + " came to " + somewhere + ". ";
+            return getName() + " came to " + somewhere.getName() + ". ";
         } else if (speed == 0) {
             return getName() + standing() + ". ";
         } else {
-            return getName() + " run to " + somewhere + ". ";
+            return getName() + " run to " + somewhere.getName() + ". ";
         }
     }
 
@@ -97,7 +98,7 @@ public abstract class Human implements Pain {
         Human other = (Human) obj;
         if (quantity != other.quantity)
             return false;
-        boolean equ = (obj.hashCode() == this.hashCode()) ? true : false;
+        boolean equ = obj.hashCode() == this.hashCode();
         return equ;
     }
 }

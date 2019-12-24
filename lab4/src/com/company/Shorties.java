@@ -4,19 +4,35 @@ public class Shorties extends Human {
     private  int planetCoordinateX = 56;
     private int planetCoordinateY = 98;
     private int planetCoordinateZ = 3;
+    private ShortysHouse house;
 
-    Shorties(String str, int number, String type) {
+    Shorties(String str, int number, String type, ShortysHouse house) {
         super(str, number, type);
+        this.house = house;
+        house.isOpen = true;
     }
 
-    final static String throwBalls() {
-        return "Shorties trows Balls. ";
+    static String throwBalls() {
+        return "Shorties throws Balls. ";
     }
 
-    final String dodge(boolean hit, Things thing) {
+    String dodge(boolean hit, Things thing) {
+
+        class EyeOfWorker {
+            public String bruise() {
+                return " has a black eye.";
+            }
+        }
+
+        EyeOfWorker eye = new EyeOfWorker();
+
         thing.fall();
         if (hit) {
-            return getName() + pain() + getName() + " didn't have time to dodge. " + came(TypeOfInstitution.HOME, 15);
+            try {
+                return getName() + pain() + getName() + " didn't have time to dodge. " + came(house, 15) + getName() + eye.bruise();
+            } catch (InstitutionIsOpenException err) {
+                return err.getMessage();
+            }
         } else {
             return getName() + " dodges " + thing.getName() + ". ";
         }

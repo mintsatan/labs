@@ -1,14 +1,21 @@
 package com.company;
 
 public abstract class Institution {
+    public boolean isOpen = false;
     private String name;
     private int square;
     private static TypeOfInstitution type;
 
-    Institution(String name, int square, TypeOfInstitution type) {
+    Institution(String name, int square) {
         this.name = name;
         this.square = square;
-        this.type = type;
+        Foundation foundation = new Foundation();
+    }
+
+    static class Foundation {
+        protected void finalize() {
+            System.out.print(" Foundation is destroyed.");
+        };
     }
 
     public int getSquare() {
@@ -27,7 +34,11 @@ public abstract class Institution {
         type = institution;
     }
 
-    public abstract String open();
+    public String open() {
+        isOpen = true;
+        return "Fun booth opened.";
+    }
+
 
     protected void finalize() {
         System.out.println(this.name + " has been closed.");
