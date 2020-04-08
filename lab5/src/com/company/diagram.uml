@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="297.18633207070707" y="208.0">com.company.Product</node>
+    <node x="398.0735795454546" y="0.0">com.company.Country</node>
+    <node x="128.08333333333331" y="99.0">com.company.Person</node>
+    <node x="236.08333333333331" y="99.0">com.company.Coordinates</node>
+    <node x="377.0833333333333" y="99.0">com.company.UnitOfMeasure</node>
+    <node x="252.15416666666667" y="287.0">com.company.Products</node>
+    <node x="0.0" y="0.0">com.company.Color0</node>
+    <node x="575.5011363636363" y="515.0">com.company.Main</node>
+    <node x="532.0833333333333" y="287.0">com.company.Interactiv4ik</node>
+    <node x="108.0" y="0.0">com.company.Color</node>
+    <node x="297.5604166666667" y="436.0">com.company.CollectionWork</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.company.Main" target="com.company.CollectionWork">
+      <point x="-24.666666666666686" y="-14.5" />
+      <point x="587.8344696969696" y="490.0" />
+      <point x="368.0604166666667" y="490.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.company.Product" target="com.company.UnitOfMeasure">
+      <point x="39.166666666666686" y="-14.5" />
+      <point x="383.35299873737375" y="188.0" />
+      <point x="444.0833333333333" y="188.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.company.Person" target="com.company.Color">
+      <point x="-7.333333333333314" y="-14.5" />
+      <point x="164.75" y="49.0" />
+      <point x="148.5" y="49.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.company.CollectionWork" target="com.company.Products">
+      <point x="-13.21875" y="-14.5" />
+      <point x="354.8416666666667" y="356.0" />
+      <point x="327.9041666666667" y="356.0" />
+      <point x="25.25" y="14.5" />
+    </edge>
+    <edge source="com.company.CollectionWork" target="com.company.Country">
+      <point x="30.84375" y="-14.5" />
+      <point x="398.9041666666667" y="376.0" />
+      <point x="521.5833333333333" y="376.0" />
+      <point x="521.5833333333333" y="79.0" />
+      <point x="476.4069128787879" y="79.0" />
+      <point x="31.333333333333314" y="14.5" />
+    </edge>
+    <edge source="com.company.Main" target="com.company.Interactiv4ik">
+      <point x="24.666666666666686" y="-14.5" />
+      <point x="637.167803030303" y="490.0" />
+      <point x="630.3344696969697" y="490.0" />
+      <point x="630.3344696969697" y="416.0" />
+      <point x="654.9166666666666" y="416.0" />
+      <point x="55.833333333333314" y="14.5" />
+    </edge>
+    <edge source="com.company.CollectionWork" target="com.company.Person">
+      <point x="-39.65625" y="-14.5" />
+      <point x="328.4041666666667" y="386.0" />
+      <point x="154.48958333333331" y="386.0" />
+      <point x="154.48958333333331" y="188.0" />
+      <point x="161.08333333333331" y="188.0" />
+      <point x="-11.0" y="14.5" />
+    </edge>
+    <edge source="com.company.Person" target="com.company.Country">
+      <point x="22.0" y="-14.5" />
+      <point x="194.08333333333331" y="69.0" />
+      <point x="413.7402462121213" y="69.0" />
+      <point x="-31.333333333333332" y="14.5" />
+    </edge>
+    <edge source="com.company.Products" target="com.company.Product">
+      <point x="-25.25" y="-14.5" />
+      <point x="277.4041666666667" y="267.0" />
+      <point x="306.58633207070704" y="267.0" />
+      <point x="-37.60000000000002" y="14.5" />
+    </edge>
+    <edge source="com.company.CollectionWork" target="com.company.UnitOfMeasure">
+      <point x="22.03125" y="-14.5" />
+      <point x="390.0916666666667" y="366.0" />
+      <point x="488.74999999999994" y="366.0" />
+      <point x="44.66666666666663" y="14.5" />
+    </edge>
+    <edge source="com.company.Person" target="com.company.Color0">
+      <point x="-22.0" y="-14.5" />
+      <point x="150.08333333333331" y="59.0" />
+      <point x="73.33333333333331" y="59.0" />
+      <point x="29.333333333333314" y="14.5" />
+    </edge>
+    <edge source="com.company.Product" target="com.company.Person">
+      <point x="-23.5" y="-14.5" />
+      <point x="320.68633207070707" y="168.0" />
+      <point x="205.08333333333331" y="168.0" />
+      <point x="33.0" y="14.5" />
+    </edge>
+    <edge source="com.company.CollectionWork" target="com.company.Coordinates">
+      <point x="-30.84375" y="-14.5" />
+      <point x="337.2166666666667" y="376.0" />
+      <point x="241.65416666666667" y="376.0" />
+      <point x="241.65416666666667" y="188.0" />
+      <point x="256.25" y="188.0" />
+      <point x="-40.333333333333314" y="14.5" />
+    </edge>
+    <edge source="com.company.Interactiv4ik" target="com.company.CollectionWork">
+      <point x="11.166666666666629" y="14.5" />
+      <point x="610.25" y="416.0" />
+      <point x="434.1541666666667" y="416.0" />
+      <point x="66.09375" y="-14.5" />
+    </edge>
+    <edge source="com.company.CollectionWork" target="com.company.Color0">
+      <point x="-66.09375" y="-14.5" />
+      <point x="301.9666666666667" y="416.0" />
+      <point x="55.337847222222194" y="416.0" />
+      <point x="55.337847222222194" y="79.0" />
+      <point x="14.666666666666686" y="79.0" />
+      <point x="-29.333333333333314" y="14.5" />
+    </edge>
+    <edge source="com.company.CollectionWork" target="com.company.Product">
+      <point x="13.21875" y="-14.5" />
+      <point x="381.2791666666667" y="356.0" />
+      <point x="385.19857954545455" y="356.0" />
+      <point x="385.19857954545455" y="267.0" />
+      <point x="381.78633207070703" y="267.0" />
+      <point x="37.599999999999966" y="14.5" />
+    </edge>
+    <edge source="com.company.CollectionWork" target="com.company.Interactiv4ik">
+      <point x="39.65625" y="-14.5" />
+      <point x="407.7166666666667" y="386.0" />
+      <point x="543.25" y="386.0" />
+      <point x="-55.833333333333314" y="14.5" />
+    </edge>
+    <edge source="com.company.Product" target="com.company.Coordinates">
+      <point x="7.833333333333314" y="-14.5" />
+      <point x="352.0196654040404" y="148.0" />
+      <point x="336.9166666666667" y="148.0" />
+      <point x="40.33333333333337" y="14.5" />
+    </edge>
+    <edge source="com.company.CollectionWork" target="com.company.Color">
+      <point x="-57.28125" y="-14.5" />
+      <point x="310.7791666666667" y="406.0" />
+      <point x="117.58333333333331" y="406.0" />
+      <point x="117.58333333333331" y="79.0" />
+      <point x="121.5" y="79.0" />
+      <point x="-27.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9" x="528.5714285714288" y="289.7857142857143" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
