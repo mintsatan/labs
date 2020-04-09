@@ -139,102 +139,110 @@ public class CollectionWork {
     public Product getProduct() {
         Product thing;
         Person owner;
+        String name;
+        Integer x;
+        float y;
+        Float price;
+        Double manufactureCost;
+        UnitOfMeasure unitOfMeasure;
+        String nameow;
+        int weight;
+        Color eyecolor;
+        Color0 haircolor;
+        Country nationality;
+        Scanner support;
         Scanner input = new Scanner(System.in);
-        boolean control = false;
-        while (!control) {
+        String inputString = "";
+        do {
             if (!this.logging) {
                 System.out.println("Введите название продукта: ");
             }
-            control = input.hasNext();
-            if (!control) {
-                input.next();
-            } else {
+            inputString = input.nextLine();
+
+            if (!inputString.isEmpty()) {
+                name = inputString.split(" ")[0];
                 break;
             }
-        }
-        String name = input.next();
-        control = false;
-        while (!control) {
+        } while (true);
+        do {
             if (!this.logging) {
                 System.out.println("Введите координату x: ");
             }
-            control = input.hasNextInt();
-            if (!control) {
-                input.next();
-            } else {
-                break;
+            inputString = input.nextLine();
+            if (!inputString.isEmpty()) {
+                support = new Scanner(inputString);
+                if (support.hasNextInt()) {
+                    x = support.nextInt();
+                    break;
+                }
             }
-        }
-        Integer x = input.nextInt();
-        control = false;
-        while (!control) {
+        } while (true);
+        do {
             if (!this.logging) {
                 System.out.println("Введите координату y: ");
             }
-            control = input.hasNextFloat();
-            if (!control) {
-                input.next();
-            } else {
-                break;
+            inputString = input.nextLine();
+            if (!inputString.isEmpty()) {
+                support = new Scanner(inputString);
+                if (support.hasNextFloat()) {
+                    y = support.nextFloat();
+                    break;
+                }
             }
-        }
-        float y = input.nextFloat();
-        control = false;
-        while (!control) {
+        } while (true);
+        do {
             if (!this.logging) {
                 System.out.println("Введите цену: ");
             }
-            control = input.hasNextFloat();
-            if (!control) {
-                input.next();
-            } else {
-                break;
+            inputString = input.nextLine();
+            if (!inputString.isEmpty()) {
+                support = new Scanner(inputString);
+                if (support.hasNextFloat()) {
+                    price = support.nextFloat();
+                    break;
+                }
             }
-        }
-        Float price = input.nextFloat();
-        control = false;
-        while (!control) {
-            if (!this.logging) {
-                System.out.println("Введите стоимость производства: ");
-            }
-            control = input.hasNextDouble();
-            if (!control) {
-                input.next();
-            } else {
-                break;
-            }
-        }
-        Double manufactureCost = input.nextDouble();
-        control = false;
+        } while (true);
+            do {
+                if (!this.logging) {
+                    System.out.println("Введите стоимость производства: ");
+                }
+                inputString = input.nextLine();
+                if (!inputString.isEmpty()) {
+                    support = new Scanner(inputString);
+                    if (support.hasNextDouble()) {
+                        manufactureCost = support.nextDouble();
+                        break;
+                    }
+                }
+            } while (true);
         int number = 0;
-        while (!control) {
+                do {
             if (!this.logging) {
-                System.out.println("Выберете единицу измерения 1-4 (" + UnitOfMeasure.values().toString() + "): ");
+                System.out.println("Выберете единицу измерения 1-4 (" + Arrays.toString(UnitOfMeasure.values()) + "): ");
             }
-            control = input.hasNextInt();
-            if (!control) {
-                input.next();
-            } else {
-                number = input.nextInt();
-                control = (number >= 1 && number <= 3);
-            }
-        }
-        UnitOfMeasure unitOfMeasure = UnitOfMeasure.values()[number - 1];
-        control = false;
-        boolean control_2 = false;
-        String change = "";
-        while (!control) {
+                    inputString = input.nextLine();
+
+                    if (!inputString.isEmpty()) {
+                        support = new Scanner(inputString);
+                        if (support.hasNextInt()) {
+                            number = support.nextInt();
+                            if (number >= 1 || number <= 4) break;
+                        }
+                    }
+                } while (true);
+        do {
             if (!this.logging) {
                 System.out.println("Вы хотите добавить владельца продукта? Да/Нет");
             }
-            control = input.hasNext();
-            if (!control) {
-                input.next();
-            } else {
-                change = input.next();
-                control = (change.equals("Да") || change.equals("Нет"));
+            inputString = input.nextLine();
+
+            if (!inputString.isEmpty()) {
+                String change = inputString.split(" ")[0];
+                break;
             }
-        }
+        } while (true);
+                control = (change.equals("Да") || change.equals("Нет"));
         control_2 = change.equals("Да");
         if (!control_2) {
             owner = null;
@@ -271,7 +279,7 @@ public class CollectionWork {
             control_2 = false;
             while (!control_2) {
                 if (!this.logging) {
-                    System.out.println("Выберете цвет глаз 1-4 (" + Color.values().toString() + "): ");
+                    System.out.println("Выберете цвет глаз 1-4 (" + Arrays.toString(Color.values()) + "): ");
                 }
                 control_2 = input.hasNextInt();
                 if (!control_2) {
@@ -286,7 +294,7 @@ public class CollectionWork {
             control_2 = false;
             while (!control_2) {
                 if (!this.logging) {
-                    System.out.println("Выберете цвет волос 1-5 (" + Color0.values().toString() + "): ");
+                    System.out.println("Выберете цвет волос 1-5 (" + Arrays.toString(Color0.values()) + "): ");
                 }
                 control_2 = input.hasNextInt();
                 if (!control_2) {
@@ -302,7 +310,7 @@ public class CollectionWork {
             while (!control_2) {
                 {
                     if (!this.logging) {
-                        System.out.println("Выберете национальность 1-5 (" + Country.values().toString() + "): ");
+                        System.out.println("Выберете национальность 1-5 (" + Arrays.toString(Country.values()) + "): ");
                     }
                 }
                 control_2 = input.hasNextInt();
@@ -473,7 +481,6 @@ public class CollectionWork {
      * @throws FileNotFoundException
      */
     public void execute_script(String filename) throws FileNotFoundException {
-        filename = "C:\\Users\\Yana\\IdeaProjects\\lab5\\script.txt";
         try {
 //            InputStream inputStream = new FileInputStream(System.getenv(filename));
             InputStream inputStream = new FileInputStream(filename);
