@@ -153,6 +153,7 @@ public class CollectionWork {
         Scanner support;
         Scanner input = new Scanner(System.in);
         String inputString = "";
+        boolean control;
         do {
             if (!this.logging) {
                 System.out.println("Введите название продукта: ");
@@ -217,111 +218,121 @@ public class CollectionWork {
                 }
             } while (true);
         int number = 0;
-                do {
+        do {
             if (!this.logging) {
                 System.out.println("Выберете единицу измерения 1-4 (" + Arrays.toString(UnitOfMeasure.values()) + "): ");
             }
-                    inputString = input.nextLine();
+            inputString = input.nextLine();
 
-                    if (!inputString.isEmpty()) {
-                        support = new Scanner(inputString);
-                        if (support.hasNextInt()) {
-                            number = support.nextInt();
-                            if (number >= 1 || number <= 4) break;
-                        }
+            if (!inputString.isEmpty()) {
+                support = new Scanner(inputString);
+                if (support.hasNextInt()) {
+                    number = support.nextInt();
+                    if (number >= 1 && number <= 4) {
+                        unitOfMeasure = UnitOfMeasure.values()[number - 1];
+                        break;
                     }
-                } while (true);
+                }
+            }
+        } while (true);
         do {
             if (!this.logging) {
-                System.out.println("Вы хотите добавить владельца продукта? Да/Нет");
+                System.out.println("Вы хотите добавить владельца продукта? Yes/No");
             }
             inputString = input.nextLine();
 
             if (!inputString.isEmpty()) {
                 String change = inputString.split(" ")[0];
-                break;
-            }
-        } while (true);
-                control = (change.equals("Да") || change.equals("Нет"));
-        control_2 = change.equals("Да");
-        if (!control_2) {
-            owner = null;
-        } else {
-            control_2 = false;
-            while (!control_2) {
-                if (!this.logging) {
-                    System.out.println("Введите имя владельца: ");
-                }
-                control_2 = input.hasNext();
-                if (!control_2) {
-                    input.next();
-                } else {
+                if (change.equals("Yes") || change.equals("No")) {
+                    control = change.equals("Yes");
                     break;
                 }
             }
-            String nameow = input.next();
-            control_2 = false;
-            int wei = 1;
-            while (!control_2) {
+        } while (true);
+        if (!control) {
+            owner = null;
+        } else {
+            do {
+                if (!this.logging) {
+                    System.out.println("Введите имя владельца: ");
+                }
+                inputString = input.nextLine();
+
+                if (!inputString.isEmpty()) {
+                    nameow = inputString.split(" ")[0];
+                    break;
+                }
+            } while (true);
+            do {
                 if (!this.logging) {
                     System.out.println("Введите вес владельца: ");
                 }
-                control_2 = input.hasNext();
-                if (!control_2) {
-                    input.next();
-                } else {
-                    wei = input.nextInt();
-                    control_2 = (wei > 0);
+                inputString = input.nextLine();
+
+                if (!inputString.isEmpty()) {
+                    support = new Scanner(inputString);
+                    if (support.hasNextInt()) {
+                        number = support.nextInt();
+                        if (number > 0) {
+                            weight = number;
+                            break;
+                        }
+                    }
                 }
-            }
-            int weight = wei;
-            int num = 0;
-            control_2 = false;
-            while (!control_2) {
+            } while (true);
+            do {
                 if (!this.logging) {
                     System.out.println("Выберете цвет глаз 1-4 (" + Arrays.toString(Color.values()) + "): ");
                 }
-                control_2 = input.hasNextInt();
-                if (!control_2) {
-                    input.next();
-                } else {
-                    num = input.nextInt();
-                    control_2 = (num >= 1 && num <= 4);
+                inputString = input.nextLine();
+
+                if (!inputString.isEmpty()) {
+                    support = new Scanner(inputString);
+                    if (support.hasNextInt()) {
+                        number = support.nextInt();
+                        if (number >= 1 && number <= 4) {
+                            eyecolor = Color.values()[number - 1];
+                            break;
+                        }
+                    }
                 }
-            }
-            Color eyecolor = Color.values()[num - 1];
-            num = 0;
-            control_2 = false;
-            while (!control_2) {
+            } while (true);
+            do {
                 if (!this.logging) {
                     System.out.println("Выберете цвет волос 1-5 (" + Arrays.toString(Color0.values()) + "): ");
                 }
-                control_2 = input.hasNextInt();
-                if (!control_2) {
-                    input.next();
-                } else {
-                    num = input.nextInt();
-                    control_2 = (num >= 1 && num <= 5);
+                inputString = input.nextLine();
+
+                if (!inputString.isEmpty()) {
+                    support = new Scanner(inputString);
+                    if (support.hasNextInt()) {
+                        number = support.nextInt();
+                        if (number >= 1 && number <= 5) {
+                            haircolor = Color0.values()[number - 1];
+                            break;
+                        }
+                    }
                 }
-            }
-            Color0 haircolor = Color0.values()[num - 1];
-            num = 0;
-            control_2 = false;
-            while (!control_2) {
+            } while (true);
+            do {
                 {
                     if (!this.logging) {
                         System.out.println("Выберете национальность 1-5 (" + Arrays.toString(Country.values()) + "): ");
                     }
                 }
-                control_2 = input.hasNextInt();
-                if (!control_2) {
-                    input.next();
-                } else {
-                    num = input.nextInt();
-                    control_2 = (num >= 1 && num <= 5);
+                inputString = input.nextLine();
+
+                if (!inputString.isEmpty()) {
+                    support = new Scanner(inputString);
+                    if (support.hasNextInt()) {
+                        number = support.nextInt();
+                        if (number >= 1 && number <= 5) {
+                            nationality = Country.values()[number - 1];
+                            break;
+                        }
+                    }
                 }
-            }
-            Country nationality = Country.values()[num - 1];
+            } while (true);
             owner = new Person(nameow, weight, eyecolor, haircolor, nationality);
         }
         thing = new Product(name, new Coordinates(x, y), price, manufactureCost, unitOfMeasure, owner);
@@ -459,7 +470,7 @@ public class CollectionWork {
             jaxbMarshaller.marshal(prod, new File(System.getenv("env_variable_for_my_5_laba")));
 
             jaxbMarshaller.marshal(prod, sw);
-            System.out.println(sw.toString());
+//            System.out.println(sw.toString());
         } catch (JAXBException e) {
             e.printStackTrace();
         }
@@ -487,7 +498,7 @@ public class CollectionWork {
 
             Interactiv4ik my = new Interactiv4ik(new CollectionWork(System.getenv("env_variable_for_my_5_laba")), inputStream);
         } catch (FileNotFoundException e) {
-            System.out.println("Файла по указанному пути не существует. Введите переменную окружения -'readscript'");
+            System.out.println("Файла по указанному пути не существует");
         }
     }
 

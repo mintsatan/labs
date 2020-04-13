@@ -98,7 +98,7 @@ public class Interactiv4ik {
                         boolean control_3 = in.hasNext();
                         if (!control_3) {
                             if (!this.standartStream) {
-                                System.out.println("Введите имя файла (переменная окружения - 'readscript')");
+                                System.out.println("Введите имя файла");
                             }
                             in.next();
                         } else {
@@ -108,7 +108,7 @@ public class Interactiv4ik {
                         break;
                     default:
                         if (!this.standartStream) {
-                            System.out.println("Неизвестная комманда. Вы можете посмотреть список комманд с помощью 'help'\n");
+                            System.out.println("Неизвестная команда. Вы можете посмотреть список команд с помощью 'help'\n");
                         }
                 }
             }
