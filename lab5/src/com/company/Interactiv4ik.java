@@ -28,7 +28,7 @@ public class Interactiv4ik {
     public void init() throws FileNotFoundException {
         Scanner in = new Scanner(this.inputStream);
         do {
-            if (in.hasNext()) {
+            if (in.hasNextLine()) {
                 last_command = in.next();
                 switch (last_command) {
                     case "help":
