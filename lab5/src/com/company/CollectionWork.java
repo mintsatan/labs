@@ -158,6 +158,10 @@ public class CollectionWork {
             if (!this.logging) {
                 System.out.println("Введите название продукта: ");
             }
+            if (!input.hasNextLine()) {
+                input.close();
+                safe_exit();
+            }
             inputString = input.nextLine();
 
             if (!inputString.isEmpty()) {
@@ -168,6 +172,10 @@ public class CollectionWork {
         do {
             if (!this.logging) {
                 System.out.println("Введите координату x: ");
+            }
+            if (!input.hasNextLine()) {
+                input.close();
+                safe_exit();
             }
             inputString = input.nextLine();
             if (!inputString.isEmpty()) {
@@ -182,6 +190,10 @@ public class CollectionWork {
             if (!this.logging) {
                 System.out.println("Введите координату y: ");
             }
+            if (!input.hasNextLine()) {
+                input.close();
+                safe_exit();
+            }
             inputString = input.nextLine();
             if (!inputString.isEmpty()) {
                 support = new Scanner(inputString);
@@ -194,6 +206,10 @@ public class CollectionWork {
         do {
             if (!this.logging) {
                 System.out.println("Введите цену: ");
+            }
+            if (!input.hasNextLine()) {
+                input.close();
+                safe_exit();
             }
             inputString = input.nextLine();
             if (!inputString.isEmpty()) {
@@ -208,6 +224,10 @@ public class CollectionWork {
                 if (!this.logging) {
                     System.out.println("Введите стоимость производства: ");
                 }
+                if (!input.hasNextLine()) {
+                    input.close();
+                    safe_exit();
+                }
                 inputString = input.nextLine();
                 if (!inputString.isEmpty()) {
                     support = new Scanner(inputString);
@@ -221,6 +241,10 @@ public class CollectionWork {
         do {
             if (!this.logging) {
                 System.out.println("Выберете единицу измерения 1-4 (" + Arrays.toString(UnitOfMeasure.values()) + "): ");
+            }
+            if (!input.hasNextLine()) {
+                input.close();
+                safe_exit();
             }
             inputString = input.nextLine();
 
@@ -239,6 +263,10 @@ public class CollectionWork {
             if (!this.logging) {
                 System.out.println("Вы хотите добавить владельца продукта? Yes/No");
             }
+            if (!input.hasNextLine()) {
+                input.close();
+                safe_exit();
+            }
             inputString = input.nextLine();
 
             if (!inputString.isEmpty()) {
@@ -256,6 +284,10 @@ public class CollectionWork {
                 if (!this.logging) {
                     System.out.println("Введите имя владельца: ");
                 }
+                if (!input.hasNextLine()) {
+                    input.close();
+                    safe_exit();
+                }
                 inputString = input.nextLine();
 
                 if (!inputString.isEmpty()) {
@@ -266,6 +298,10 @@ public class CollectionWork {
             do {
                 if (!this.logging) {
                     System.out.println("Введите вес владельца: ");
+                }
+                if (!input.hasNextLine()) {
+                    input.close();
+                    safe_exit();
                 }
                 inputString = input.nextLine();
 
@@ -284,6 +320,10 @@ public class CollectionWork {
                 if (!this.logging) {
                     System.out.println("Выберете цвет глаз 1-4 (" + Arrays.toString(Color.values()) + "): ");
                 }
+                if (!input.hasNextLine()) {
+                    input.close();
+                    safe_exit();
+                }
                 inputString = input.nextLine();
 
                 if (!inputString.isEmpty()) {
@@ -300,6 +340,10 @@ public class CollectionWork {
             do {
                 if (!this.logging) {
                     System.out.println("Выберете цвет волос 1-5 (" + Arrays.toString(Color0.values()) + "): ");
+                }
+                if (!input.hasNextLine()) {
+                    input.close();
+                    safe_exit();
                 }
                 inputString = input.nextLine();
 
@@ -319,6 +363,10 @@ public class CollectionWork {
                     if (!this.logging) {
                         System.out.println("Выберете национальность 1-5 (" + Arrays.toString(Country.values()) + "): ");
                     }
+                }
+                if (!input.hasNextLine()) {
+                    input.close();
+                    safe_exit();
                 }
                 inputString = input.nextLine();
 
@@ -495,7 +543,6 @@ public class CollectionWork {
         try {
 //            InputStream inputStream = new FileInputStream(System.getenv(filename));
             InputStream inputStream = new FileInputStream(filename);
-
             Interactiv4ik my = new Interactiv4ik(new CollectionWork(System.getenv("env_variable_for_my_5_laba")), inputStream);
         } catch (FileNotFoundException e) {
             System.out.println("Файла по указанному пути не существует");
@@ -544,6 +591,10 @@ public class CollectionWork {
         }
     }
 
+    public void safe_exit() {
+        save();
+        System.exit(0);
+    }
 
     /**
      * Выводит справку по доступным командам
