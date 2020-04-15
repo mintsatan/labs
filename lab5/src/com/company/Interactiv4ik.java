@@ -13,6 +13,7 @@ public class Interactiv4ik {
     private String last_command;
     private InputStream inputStream;
     private boolean standartStream;
+    private String last_string;
 
     Interactiv4ik (CollectionWork helper, InputStream inputStream) throws FileNotFoundException {
         this.helper = helper;
@@ -29,18 +30,19 @@ public class Interactiv4ik {
         Scanner in = new Scanner(this.inputStream);
         do {
             try {
-                last_command = in.nextLine();
+                last_string = in.nextLine().trim();
             } catch (NoSuchElementException ex) {
-                helper.save();
                 in.close();
                 helper.safe_exit();
             }
-            last_command = last_command.trim();
-            if (!last_command.isEmpty()) {
-                last_command = last_command.split(" ")[0];
-            } else {
+
+            if (last_string.isEmpty()) {
                 System.out.println("Введите команду");
+                last_command = "";
+                continue;
             }
+            Scanner stringScanner = new Scanner(last_string);
+            last_command = stringScanner.next();
                 switch (last_command) {
                     case "help":
                         helper.help();
@@ -56,31 +58,73 @@ public class Interactiv4ik {
                         helper.min_by_name();
                         break;
                     case "update":
-                        do {
-                            boolean control = in.hasNextInt();
-                            if (!control) {
-                                if (!this.standartStream) {
-                                    System.out.println("Введите id элемента");
-                                }
-                                in.next();
-                            } else {
-                                int id = in.nextInt();
-                                in.nextLine();
-                                helper.update(id);
-                                break;
-                            }
-                        } while (true);
-                        break;
-                    case "remove_by_id":
-                        boolean control_2 = (in.hasNextInt());
-                        if (!control_2) {
+                        boolean control = stringScanner.hasNextInt();
+                        if (control) {
+                            int id = stringScanner.nextInt();
+                            helper.update(id);
+                        } else {
                             if (!this.standartStream) {
                                 System.out.println("Введите id элемента");
                             }
-                            in.next();
-                        } else {
-                            int id = in.nextInt();
+                            do {
+                                try {
+                                    last_string = in.nextLine().trim();
+                                } catch (NoSuchElementException ex) {
+                                    in.close();
+                                    helper.safe_exit();
+                                }
+                                if (last_string.isEmpty()) {
+                                    if (!this.standartStream) {
+                                        System.out.println("Введите id элемента");
+                                    }
+                                } else {
+                                    stringScanner = new Scanner(last_string);
+                                    if (stringScanner.hasNextInt()) {
+                                        int id = stringScanner.nextInt();
+                                        helper.update(id);
+                                        break;
+                                    } else {
+                                        if (!this.standartStream) {
+                                            System.out.println("Введите id элемента");
+                                        }
+                                    }
+                                }
+                            } while (true);
+                        }
+                        break;
+                    case "remove_by_id":
+                        control = stringScanner.hasNextInt();
+                        if (control) {
+                            int id = stringScanner.nextInt();
                             helper.remove_by_id(id);
+                        } else {
+                            if (!this.standartStream) {
+                                System.out.println("Введите id элемента");
+                            }
+                            do {
+                                try {
+                                    last_string = in.nextLine().trim();
+                                } catch (NoSuchElementException ex) {
+                                    in.close();
+                                    helper.safe_exit();
+                                }
+                                if (last_string.isEmpty()) {
+                                    if (!this.standartStream) {
+                                        System.out.println("Введите id элемента");
+                                    }
+                                } else {
+                                    stringScanner = new Scanner(last_string);
+                                    if (stringScanner.hasNextInt()) {
+                                        int id = stringScanner.nextInt();
+                                        helper.remove_by_id(id);
+                                        break;
+                                    } else {
+                                        if (!this.standartStream) {
+                                            System.out.println("Введите id элемента");
+                                        }
+                                    }
+                                }
+                            } while (true);
                         }
                         break;
                     case "save":
@@ -110,16 +154,39 @@ public class Interactiv4ik {
                         }
                         break;
                     case "execute_script":
-                        boolean control_3 = in.hasNext();
-                        if (!control_3) {
-                            if (!this.standartStream) {
-                                System.out.println("Введите имя файла");
-                            }
-                            in.next();
-                        } else {
-                            String filename = in.next();
+                        control = stringScanner.hasNext();
+                        if (control) {
+                            String filename = stringScanner.next();
                             helper.execute_script(filename);
-                        }
+                        } else {
+                                if (!this.standartStream) {
+                                    System.out.println("Введите имя файла");
+                                }
+                                do {
+                                    try {
+                                        last_string = in.nextLine().trim();
+                                    } catch (NoSuchElementException ex) {
+                                        in.close();
+                                        helper.safe_exit();
+                                    }
+                                    if (last_string.isEmpty()) {
+                                        if (!this.standartStream) {
+                                            System.out.println("Введите имя файла");
+                                        }
+                                    } else {
+                                        stringScanner = new Scanner(last_string);
+                                        if (stringScanner.hasNext()) {
+                                            String filename = stringScanner.next();
+                                            helper.execute_script(filename);
+                                            break;
+                                        } else {
+                                            if (!this.standartStream) {
+                                                System.out.println("Введите имя файла");
+                                            }
+                                        }
+                                    }
+                                } while (true);
+                            }
                         break;
                     default:
                         if (!this.standartStream) {
