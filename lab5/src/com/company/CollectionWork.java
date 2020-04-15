@@ -162,7 +162,7 @@ public class CollectionWork {
                 input.close();
                 safe_exit();
             }
-            inputString = input.nextLine();
+            inputString = input.nextLine().trim();
 
             if (!inputString.isEmpty()) {
                 name = inputString.split(" ")[0];
