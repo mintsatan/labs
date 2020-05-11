@@ -17,21 +17,5 @@ public class ExecuteScript extends Command {
         name = "execute_script";
         indication = "исполняет скрипт из указанного файла";
     }
-
-    @Override
-    public synchronized String execute(PriorityQueue<Product> production) {
-        try {
-            File file = new File(filename);
-            String format = file.getAbsolutePath().substring(file.getAbsolutePath().lastIndexOf(".") + 1);
-            if (!format.equals("txt")) {
-                InputStream inputStream = new FileInputStream(file);
-//                Interactiv4ik my = new Interactiv4ik(new CollectionWork(System.getenv("env_variable_for_my_5_laba")), inputStream);
-            } else {
-                return "Неверный файл";
-            }
-        } catch (FileNotFoundException e) {
-            return "Файла по указанному пути не существует";
-        }
-        return null;
-    }
+    
 }
