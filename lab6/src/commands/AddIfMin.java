@@ -18,7 +18,7 @@ public class AddIfMin extends Command {
     public synchronized String execute(PriorityQueue<Product> production) {
         if (new_one.getId() < production.peek().getId()) {
             production.add(new_one);
-            return null;
+            return "Элемент успешно добавлен";
         } else {
             return "id данного элемента больше, чем у наименьшего в коллекции";
         }

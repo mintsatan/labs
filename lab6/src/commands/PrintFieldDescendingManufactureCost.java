@@ -21,9 +21,9 @@ public class PrintFieldDescendingManufactureCost extends Command {
             for (int i = 0; i < production.size(); i++) {
                 result.append(coll2.get(i).getManufactureCost()).append("\n    ");
             }
+            return result.toString();
         } else {
             return "Коллекция не содержит элементов";
         }
-        return null;
     }
 }

@@ -2,19 +2,48 @@ package com.company;
 
 import commands.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.Arrays;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 public class ClientPart {
     private String last_string;
     private InputStream inputStream;
+    private Scanner in;
+    private ByteArrayOutputStream byteArrayOutputStream;
+    private ObjectOutputStream objectOutputStream;
+    private final ServerConnect serverDeliver;
+    private ByteArrayInputStream byteArrayInputStream;
+    private ObjectInputStream objectInputStream;
+    private List<Product> collect = new ArrayList<>();
+
+    public ClientPart(ServerConnect serverDeliver) {
+        this.serverDeliver = serverDeliver;
+        this.inputStream = System.in;
+        this.in = new Scanner(this.inputStream);
+        this.byteArrayOutputStream = new ByteArrayOutputStream();
+        try {
+            objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+        } catch (IOException e) {
+            System.err.println("Ай");
+        }
+        this.understanding();
+    }
+
+    private byte[] serialize(Object obj) {
+        try {
+            this.objectOutputStream.flush();
+            this.byteArrayOutputStream.flush();
+            this.objectOutputStream.writeObject(obj);
+        } catch (IOException e) {
+            System.err.println("Айй");
+        }
+        return this.byteArrayOutputStream.toByteArray();
+    }
 
     private String[] safeRead(String field) {
-        Scanner in = new Scanner(this.inputStream);
         System.out.println(field);
         do {
             try {
@@ -32,17 +61,29 @@ public class ClientPart {
         } while (true);
     }
 
-    public Command understanding(String[] hope) {
+    public void understanding() {
         String support;
-        String now = hope[0];
+        String now;
+        Charset charset = StandardCharsets.UTF_8;
         do {
+            String[] hope = this.safeRead("Введите команду: ");
+            now = hope[0];
             switch (now) {
                 case "add":
-                    return new Add(getProduct());
+                    this.serverDeliver.sendData(this.serialize(new Add(getProduct())));
+                    System.out.println(charset.decode(ByteBuffer.wrap(this.serverDeliver.receiving()))
+                            .toString());
+                    break;
                 case "add_if_min":
-                    return new AddIfMin(getProduct());
+                    this.serverDeliver.sendData(this.serialize(new AddIfMin(getProduct())));
+                    System.out.println(charset.decode(ByteBuffer.wrap(this.serverDeliver.receiving()))
+                            .toString());
+                    break;
                 case "clear":
-                    return new Clear();
+                    this.serverDeliver.sendData(this.serialize(new Clear()));
+                    System.out.println(charset.decode(ByteBuffer.wrap(this.serverDeliver.receiving()))
+                            .toString());
+                    break;
                 case "execute_script":
                     try {
                         support = hope[1];
@@ -67,15 +108,28 @@ public class ClientPart {
                             System.err.println("Не хватает прав доступа для работы с файлом.");
                             break;
                         }
-                    return new ExecuteScript(support);
+                    this.serverDeliver.sendData(this.serialize(new ExecuteScript(support)));
+                        break;
                 case "info":
-                    return new Info();
+                    this.serverDeliver.sendData(this.serialize(new Info()));
+                    System.out.println(charset.decode(ByteBuffer.wrap(this.serverDeliver.receiving()))
+                            .toString());
+                    break;
                 case "min_by_name":
-                    return new MinByName();
+                    this.serverDeliver.sendData(this.serialize(new MinByName()));
+                    System.out.println(charset.decode(ByteBuffer.wrap(this.serverDeliver.receiving()))
+                            .toString());
+                    break;
                 case "print_field_descending_unit_of_measure":
-                    return new PrintFieldDescendingUnitOfMeasure();
+                    this.serverDeliver.sendData(this.serialize(new PrintFieldDescendingUnitOfMeasure()));
+                    System.out.println(charset.decode(ByteBuffer.wrap(this.serverDeliver.receiving()))
+                            .toString());
+                    break;
                 case "print_field_descending_manufacture_cost":
-                    return new PrintFieldDescendingManufactureCost();
+                    this.serverDeliver.sendData(this.serialize(new PrintFieldDescendingManufactureCost()));
+                    System.out.println(charset.decode(ByteBuffer.wrap(this.serverDeliver.receiving()))
+                            .toString());
+                    break;
                 case "remove_by_id":
                     int id;
                     try {
@@ -85,19 +139,31 @@ public class ClientPart {
                         break;
                     }
 
-                        try {
-                            id = Integer.parseInt(support);
-                        } catch (NumberFormatException e) {
-                            System.err.println("id указан неверно");
-                            break;
-                        }
-                    return new RemoveById(id);
+                    try {
+                        id = Integer.parseInt(support);
+                    } catch (NumberFormatException e) {
+                        System.err.println("id указан неверно");
+                        break;
+                    }
+                    this.serverDeliver.sendData(this.serialize(new RemoveById(id)));
+                    System.out.println(charset.decode(ByteBuffer.wrap(this.serverDeliver.receiving()))
+                            .toString());
+                    break;
                 case "remove_first":
-                    return new RemoveFirst();
+                    this.serverDeliver.sendData(this.serialize(new RemoveFirst()));
+                    System.out.println(charset.decode(ByteBuffer.wrap(this.serverDeliver.receiving()))
+                            .toString());
+                    break;
                 case "remove_greater":
-                    return new RemoveGreater(getProduct());
+                    this.serverDeliver.sendData(this.serialize(new RemoveGreater(getProduct())));
+                    System.out.println(charset.decode(ByteBuffer.wrap(this.serverDeliver.receiving()))
+                            .toString());
+                    break;
                 case "show":
-                    return new Show();
+                    this.serverDeliver.sendData(this.serialize(new Show()));
+                    System.out.println(charset.decode(ByteBuffer.wrap(this.serverDeliver.receiving()))
+                            .toString());
+                    break;
                 case "update":
                     int id1;
                     try {
@@ -107,22 +173,28 @@ public class ClientPart {
                         break;
                     }
 
-                        try {
-                            id1 = Integer.parseInt(support);
-                        } catch (NumberFormatException e) {
-                            System.err.println("id указан неверно");
-                            break;
-                        }
-                    return new Update(getProduct(), id1);
-                case "save":
-                    return new Save();
+                    try {
+                        id1 = Integer.parseInt(support);
+                    } catch (NumberFormatException e) {
+                        System.err.println("id указан неверно");
+                        break;
+                    }
+                    this.serverDeliver.sendData(this.serialize(new Update(getProduct(), id1)));
+                    System.out.println(charset.decode(ByteBuffer.wrap(this.serverDeliver.receiving()))
+                            .toString());
+                    break;
                 case "help":
-                    return new Help();
+                    this.serverDeliver.sendData(this.serialize(new Help()));
+                    System.out.println(charset.decode(ByteBuffer.wrap(this.serverDeliver.receiving()))
+                            .toString());
+                    break;
+                case "exit":
+                    this.serverDeliver.sendData(this.serialize(new Exit()));
+                    break;
                 default:
                     System.err.println("Неизвестная команда. Вы можете посмотреть список команд с помощью 'help'\n");
             }
         } while (!now.equals("exit"));
-        return null;
     }
 
     public Product getProduct() {

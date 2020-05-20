@@ -1,5 +1,6 @@
 package com.company;
 
+import commands.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -11,31 +12,33 @@ import javax.xml.bind.Marshaller;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.StringWriter;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.time.ZonedDateTime;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.Objects;
-import java.util.PriorityQueue;
+import java.util.*;
 
-public class CollectionWork {
+public class ServerPart {
+    private final ServerMaker clientInteractive;
     private PriorityQueue<Product> production;
-    private Date initDate;
+    private final Date initDate;
     Comparator<Product> comparator;
     private File zerocollection;
-    private boolean logging;
+    private ByteArrayOutputStream bytearrayoutputstream;
+    private ObjectOutputStream objectoutputstream;
 
-    {
-        comparator = Comparator.comparing(Product::getId);
-        production = new PriorityQueue(comparator);
-    }
+    public ServerPart(int PORT, String envvariable) {
+        this.clientInteractive = new ServerMaker(PORT);
 
-    CollectionWork(String envvariable) {
         this.initDate = new Date();
-        this.logging = true;
+        this.comparator = Comparator.comparing(Product::getId);
+        this.production = new PriorityQueue<>(comparator);
+        this.bytearrayoutputstream = new ByteArrayOutputStream();
+        try {
+            this.objectoutputstream = new ObjectOutputStream(bytearrayoutputstream);
+        } catch (IOException e) {
+            System.err.println("Упс");
+        }
 
         DocumentBuilderFactory factory;
         DocumentBuilder builder;
@@ -48,14 +51,14 @@ public class CollectionWork {
             System.exit(1);
         }
         try {
-            zerocollection = new File(envvariable);
-            String format = zerocollection.getAbsolutePath().substring(zerocollection.getAbsolutePath().lastIndexOf(".") + 1);
-            if (!zerocollection.exists() | format.equals("xml")) throw new FileNotFoundException();
-            if (!zerocollection.canRead() || !zerocollection.canWrite()) throw new SecurityException();
+            this.zerocollection = new File(envvariable);
+            String format = this.zerocollection.getAbsolutePath().substring(this.zerocollection.getAbsolutePath().lastIndexOf("."));
+            if (!this.zerocollection.exists() | format.equals("xml")) throw new FileNotFoundException();
+            if (!this.zerocollection.canRead() || !this.zerocollection.canWrite()) throw new SecurityException();
 
             factory = DocumentBuilderFactory.newInstance();
             builder = factory.newDocumentBuilder();
-            document = builder.parse(zerocollection);
+            document = builder.parse(this.zerocollection);
             document.getDocumentElement().normalize();
 
             NodeList Products = document.getElementsByTagName("Product");
@@ -83,7 +86,7 @@ public class CollectionWork {
                 );
                 product.setId(Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent()));
                 product.setCreationDate(ZonedDateTime.parse(node.getElementsByTagName("creationDate").item(0).getTextContent()));
-                production.add(product);
+                this.production.add(product);
             }
         } catch (ParserConfigurationException e) {
             System.err.println(e.getMessage());
@@ -94,41 +97,14 @@ public class CollectionWork {
         } catch (SAXException | IOException e) {
             e.printStackTrace();
         } catch (SecurityException ex) {
-            if (!this.logging) {
-                System.err.println("Не хватает прав доступа для работы с файлом.");
-            }
+            System.err.println("Не хватает прав доступа для работы с файлом.");
             System.exit(1);
         }
+
+        this.init();
     }
 
-    public void turnOffLogging() {
-        this.logging = false;
-    }
-
-    public File getZerocollection() {
-        return zerocollection;
-    }
-
-    public Date getInitDate() {
-        return initDate;
-    }
-
-    public PriorityQueue<Product> getProduction() {
-        return production;
-    }
-
-    public void setLogging(boolean logging) {
-        this.logging = logging;
-    }
-
-    public boolean isLogging() {
-        return logging;
-    }
-
-    /**
-     * Сериализует коллекцию в xml файл
-     */
-    public void save() {
+    protected void save() {
         StringWriter sw = new StringWriter();
         try {
             Products prod = new Products();
@@ -146,28 +122,37 @@ public class CollectionWork {
         }
     }
 
-    @Override
-    public String toString() {
+    protected void init() {
+        do {
+            Command command = this.clientInteractive.receiving();
+            System.out.println(command.getClass());
+            if (command.getClass() != Exit.class) {
+                this.clientInteractive.sendData(this.performance(command));
+            } else {
+                this.save();
+            }
+
+        } while (true);
+    }
+
+    protected byte[] performance(Command command) {
+        String a;
+        Charset charset = StandardCharsets.UTF_8;
+        if (command.getClass() == Info.class) {
+            a = getInfo();
+            return charset.encode(a).array();
+        } else if (command.getClass() == ExecuteScript.class) {
+            return null;
+        } else {
+            a = command.execute(this.production);
+            return charset.encode(a).array();
+        }
+    }
+
+    public String getInfo() {
         return "Тип коллекции: " + production.getClass() +
                 "\nДата инициализации: " + initDate +
-                "\nКоличество элементов: " + production.size();
+                "\nКоличесвто элементов: " + production.size();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CollectionWork)) return false;
-        CollectionWork that = (CollectionWork) o;
-        return Objects.equals(production, that.production) && Objects.equals(zerocollection, that.zerocollection);
-    }
-
-    public void safe_exit() {
-        save();
-        System.exit(0);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(production, zerocollection);
-    }
 }

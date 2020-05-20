@@ -19,13 +19,17 @@ public class RemoveById extends Command {
     @Override
     public synchronized String execute(PriorityQueue<Product> production) {
         List<Product> coll2 = new ArrayList<Product>(production);
+        boolean flag = false;
         for (int j = 0; j < coll2.size(); j++) {
             Product a = coll2.get(j);
             if (a.getId() == identificator) {
-                production.remove(a);
-                return null;
+                flag = production.remove(a);
             }
         }
-        return "Записи с таким id не существует";
+        if (!flag) {
+            return "Записи с таким id не существует";
+        } else {
+            return "Элементы успешно удалены";
+        }
     }
 }

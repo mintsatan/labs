@@ -3,13 +3,15 @@ package com.company;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Класс для координат продуктов - объектов коллекции
  */
 @XmlRootElement(name = "coordinates")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Coordinates {
+public class Coordinates implements Serializable {
     private Integer x; //Поле не может быть null
     private float y;
 
@@ -33,7 +35,16 @@ public class Coordinates {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Coordinates that = (Coordinates) o;
+        return Float.compare(that.y, y) == 0 &&
+                x.equals(that.x);
+    }
+
+    @Override
     public int hashCode() {
-        return getX() + (int) getY();
+        return Objects.hash(x, y);
     }
 }

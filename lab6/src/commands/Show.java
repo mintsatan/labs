@@ -19,7 +19,7 @@ public class Show extends Command {
         StringBuilder result = new StringBuilder();
         for (int j = 0; j < coll2.size(); j++) {
             Product a = coll2.get(j);
-            result.append(a.toString()).append("\n    ");
+            result.append(a.toString()).append("\n");
         }
         return result.toString();
     }

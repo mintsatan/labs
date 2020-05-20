@@ -21,9 +21,9 @@ public class PrintFieldDescendingUnitOfMeasure extends Command {
             for (int i = 0; i < production.size(); i++) {
                 result.append(coll2.get(i).getUnitOfMeasure()).append("\n    ");
             }
+            return result.toString();
         } else {
             return "Коллекция не содержит элементов";
         }
-        return null;
     }
 }

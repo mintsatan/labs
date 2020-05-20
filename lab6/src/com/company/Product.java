@@ -1,14 +1,16 @@
 package com.company;
 
 import javax.xml.bind.annotation.*;
+import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.Objects;
 
 /**
  * Класс продуктов, хранящихся в коллекции
  */
 @XmlRootElement(name = "Product")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Product {
+public class Product implements Serializable {
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
@@ -77,5 +79,26 @@ public class Product {
     @Override
     public String toString() {
         return "id: " + getId() + " название: " + getName() + " " + getCreationDate() + " " + coordinates.toString() + " цена: " + getPrice() + " стоимость производства: " + getManufactureCost() + " единица измерия: " + getUnitOfMeasure() + " " + ((owner == null) ? "" : owner.toString());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id.equals(product.id) &&
+                name.equals(product.name) &&
+                coordinates.equals(product.coordinates) &&
+                dateTimeString.equals(product.dateTimeString) &&
+                creationDate.equals(product.creationDate) &&
+                price.equals(product.price) &&
+                manufactureCost.equals(product.manufactureCost) &&
+                unitOfMeasure == product.unitOfMeasure &&
+                Objects.equals(owner, product.owner);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, coordinates, dateTimeString, creationDate, price, manufactureCost, unitOfMeasure, owner);
     }
 }

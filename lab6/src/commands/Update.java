@@ -26,7 +26,7 @@ public class Update extends Command {
             if (coll2.get(j).getId() == identificator) {
                 production.remove(a);
                 new_one.setId(identificator);
-                return null;
+                return "Элемент удален";
             }
         }
         return "Записи с таким id не существует";
