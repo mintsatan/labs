@@ -27,6 +27,13 @@ public class ServerPart {
     private ByteArrayOutputStream bytearrayoutputstream;
     private ObjectOutputStream objectoutputstream;
 
+    class Message extends Thread {
+
+        public void run() {
+            System.out.println("Пока");
+        }
+    }
+
     public ServerPart(int PORT, String envvariable) {
         this.clientInteractive = new ServerMaker(PORT);
 
@@ -123,9 +130,14 @@ public class ServerPart {
     }
 
     protected void init() {
+        try {
+            Runtime.getRuntime().addShutdownHook(new Message());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         do {
             Command command = this.clientInteractive.receiving();
-            System.out.println(command.getClass());
+//            System.out.println(command.getClass());
             if (command.getClass() != Exit.class) {
                 this.clientInteractive.sendData(this.performance(command));
             } else {
@@ -140,13 +152,10 @@ public class ServerPart {
         Charset charset = StandardCharsets.UTF_8;
         if (command.getClass() == Info.class) {
             a = getInfo();
-            return charset.encode(a).array();
-        } else if (command.getClass() == ExecuteScript.class) {
-            return null;
         } else {
             a = command.execute(this.production);
-            return charset.encode(a).array();
         }
+        return charset.encode(a).array();
     }
 
     public String getInfo() {

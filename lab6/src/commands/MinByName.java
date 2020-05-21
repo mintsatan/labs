@@ -8,10 +8,15 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 public class MinByName extends Command {
+    public static String indication = "выводит любой объект из коллекции, значение поля name которого является минимальным";
+    public static String name = "min_by_name";
 
     public MinByName() {
-        indication = "выводит любой объект из коллекции, значение поля name которого является минимальным";
-        name = "min_by_name";
+
+    }
+
+    public static String help() {
+        return MinByName.name + ": " + MinByName.indication + '\n';
     }
 
     @Override

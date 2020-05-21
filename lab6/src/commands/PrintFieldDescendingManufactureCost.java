@@ -5,10 +5,14 @@ import com.company.Product;
 import java.util.*;
 
 public class PrintFieldDescendingManufactureCost extends Command {
+    public static String indication = "выводит значения поля manufactureCost в порядке убывания";
+    public static String name = "print_field_descending_manufacture_cost";
 
     public PrintFieldDescendingManufactureCost() {
-        indication = "выводит значения поля manufactureCost в порядке убывания";
-        name = "print_field_descending_manufacture_cost";
+    }
+
+    public static String help() {
+        return PrintFieldDescendingManufactureCost.name + ": " + PrintFieldDescendingManufactureCost.indication + '\n';
     }
 
     @Override
@@ -19,7 +23,7 @@ public class PrintFieldDescendingManufactureCost extends Command {
             Collections.reverse(coll2);
             StringBuilder result = new StringBuilder();
             for (int i = 0; i < production.size(); i++) {
-                result.append(coll2.get(i).getManufactureCost()).append("\n    ");
+                result.append(coll2.get(i).getManufactureCost()).append("\n");
             }
             return result.toString();
         } else {

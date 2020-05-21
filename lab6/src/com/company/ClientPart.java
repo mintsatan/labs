@@ -12,39 +12,34 @@ public class ClientPart {
     private String last_string;
     private InputStream inputStream;
     private Scanner in;
-    private ByteArrayOutputStream byteArrayOutputStream;
-    private ObjectOutputStream objectOutputStream;
     private final ServerConnect serverDeliver;
-    private ByteArrayInputStream byteArrayInputStream;
-    private ObjectInputStream objectInputStream;
     private List<Product> collect = new ArrayList<>();
 
-    public ClientPart(ServerConnect serverDeliver) {
+    public ClientPart(ServerConnect serverDeliver, InputStream inputStream) {
         this.serverDeliver = serverDeliver;
-        this.inputStream = System.in;
+        this.inputStream = inputStream;
         this.in = new Scanner(this.inputStream);
-        this.byteArrayOutputStream = new ByteArrayOutputStream();
-        try {
-            objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-        } catch (IOException e) {
-            System.err.println("Ай");
-        }
+
         this.understanding();
     }
 
     private byte[] serialize(Object obj) {
         try {
-            this.objectOutputStream.flush();
-            this.byteArrayOutputStream.flush();
-            this.objectOutputStream.writeObject(obj);
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+            objectOutputStream.writeObject(obj);
+//            System.out.println(Arrays.toString(byteArrayOutputStream.toByteArray()));
+            return byteArrayOutputStream.toByteArray();
         } catch (IOException e) {
             System.err.println("Айй");
         }
-        return this.byteArrayOutputStream.toByteArray();
+        return null;
     }
 
     private String[] safeRead(String field) {
-        System.out.println(field);
+        if (this.inputStream == System.in) {
+            System.out.println(field);
+        }
         do {
             try {
                 last_string = in.nextLine().trim();
@@ -68,6 +63,7 @@ public class ClientPart {
         do {
             String[] hope = this.safeRead("Введите команду: ");
             now = hope[0];
+//            System.out.println(now);
             switch (now) {
                 case "add":
                     this.serverDeliver.sendData(this.serialize(new Add(getProduct())));
@@ -97,6 +93,8 @@ public class ClientPart {
                              if (!file.exists()) throw new FileNotFoundException();
                              if (!file.canRead()) throw new SecurityException();
                              String format = file.getAbsolutePath().substring(file.getAbsolutePath().lastIndexOf(".") + 1);
+                             InputStream fileInputStream = new FileInputStream(file);
+                             ClientPart client = new ClientPart(this.serverDeliver, fileInputStream);
                             if (!format.equals("txt")) {
                                 System.err.println("Неверный файл");
                                 break;
@@ -108,8 +106,7 @@ public class ClientPart {
                             System.err.println("Не хватает прав доступа для работы с файлом.");
                             break;
                         }
-                    this.serverDeliver.sendData(this.serialize(new ExecuteScript(support)));
-                        break;
+                    break;
                 case "info":
                     this.serverDeliver.sendData(this.serialize(new Info()));
                     System.out.println(charset.decode(ByteBuffer.wrap(this.serverDeliver.receiving()))

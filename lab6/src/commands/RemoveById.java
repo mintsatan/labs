@@ -8,12 +8,15 @@ import java.util.PriorityQueue;
 
 public class RemoveById extends Command {
     Integer identificator;
+    public static String indication = "удаляет элемент из коллекции по его id";
+    public static String name = "remove_by_id";
 
     public RemoveById(int identificator) {
         this.identificator = identificator;
+    }
 
-        indication = "удаляет элемент из коллекции по его id";
-        name = "remove_by_id";
+    public static String help() {
+        return RemoveById.name + ": " + RemoveById.indication + '\n';
     }
 
     @Override

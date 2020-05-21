@@ -19,6 +19,7 @@ public class ServerMaker {
         this.socketAddress = new InetSocketAddress(PORT);
         try {
             this.server = DatagramChannel.open().bind(socketAddress);
+            System.out.println("Ожидаю подключения");
         } catch (IOException e) {
             System.err.println("Клиент не подключен к серверу");
             System.exit(1);
@@ -30,19 +31,21 @@ public class ServerMaker {
         ByteBuffer buffer;
         buffer = ByteBuffer.wrap(a);
         try {
+            buffer.clear();
             this.socketAddress = this.server.receive(buffer);
-            System.out.println(Arrays.toString(a));
+//            System.out.println(Arrays.toString(a));
             ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(a);
             ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
             return (Command) objectInputStream.readObject();
         } catch (IOException e) {
-            System.err.println("Клиент не подключен к серверу");
+            System.err.println("Клиент не подключен к серверу для получения данных");
             System.exit(1);
         } catch (ClassNotFoundException e) {
             System.err.println("Это не команда...");
         }
+        buffer.flip();
         buffer.clear();
-        System.out.println(a);
+//        System.out.println(a);
         return null;
     }
 
@@ -52,9 +55,10 @@ public class ServerMaker {
         try {
             this.server.send(buffer, socketAddress);
         } catch (IOException e) {
-            System.err.println("Клиент не подключен к серверу");
+            System.err.println("Клиент не подключен к серверу для отправки данных");
             System.exit(1);
         }
+        buffer.flip();
         buffer.clear();
     }
 }

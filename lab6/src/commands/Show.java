@@ -7,10 +7,14 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 public class Show extends Command {
+    public static String indication = "выводит все элементы коллекции в строковом представлении";
+    public static String name = "show";
 
     public Show() {
-        indication = "выводит все элементы коллекции в строковом представлении";
-        name = "show";
+    }
+
+    public static String help() {
+        return Show.name + ": " + Show.indication + '\n';
     }
 
     @Override

@@ -8,12 +8,15 @@ import java.util.PriorityQueue;
 
 public class RemoveGreater extends Command {
     Product new_one;
+    public static String indication = "удаляет из коллекции все элементы, превышающие заданный";
+    public static String name = "remove_greater";
 
     public RemoveGreater(Product new_one) {
         this.new_one = new_one;
+    }
 
-        indication = "удаляет из коллекции все элементы, превышающие заданный";
-        name = "remove_greater";
+    public static String help() {
+        return RemoveGreater.name + ": " + RemoveGreater.indication + '\n';
     }
 
     @Override
