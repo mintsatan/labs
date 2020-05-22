@@ -8,7 +8,7 @@ import java.net.UnknownHostException;
 public class Main {
 
     public static void main(String[] args) throws UnknownHostException {
-        ServerConnect serverConnect = new ServerConnect(InetAddress.getLocalHost(), 8000);
+        ServerConnect serverConnect = new ServerConnect(InetAddress.getLocalHost(), 3562);
         ClientPart client = new ClientPart(serverConnect, System.in);
     }
 }

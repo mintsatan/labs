@@ -4,24 +4,38 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
+import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.nio.channels.DatagramChannel;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class ServerConnect {
     protected SocketAddress serverAddress;
     protected DatagramChannel client;
 
-    public ServerConnect(InetAddress ADDR, int PORT) {
-        this.serverAddress = new InetSocketAddress("localhost", PORT);
-        try {
-            this.client = DatagramChannel.open();
-            this.client.connect(this.serverAddress);
-            sendData("start".getBytes());
-            receiving();
-        } catch (IOException e) {
-            System.err.println("Нет соединения с сервером");
-            System.exit(1);
+    public ServerConnect(InetAddress ADDR, int PORT) throws UnknownHostException {
+        this.serverAddress = new InetSocketAddress(InetAddress.getLocalHost(), PORT);
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            try {
+                this.client = DatagramChannel.open();
+                this.client.connect(this.serverAddress);
+                sendData("start".getBytes());
+                byte[] a = new byte[10000];
+                ByteBuffer buffer = ByteBuffer.wrap(a);
+                buffer.clear();
+                this.serverAddress = this.client.receive(buffer);
+                break;
+            } catch (IOException e) {
+                System.err.println("Нет соединения с сервером. Попробовать переподключиться? Yes/another ans");
+                String answer = scanner.nextLine();
+                if (!(answer.equals("Yes"))) {
+                    System.exit(1);
+                }
+                System.out.println("Подключение..");
+                continue;
+            }
         }
     }
 
