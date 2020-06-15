@@ -1,4 +1,0 @@
-help
-show
-min_by_name
-exit
